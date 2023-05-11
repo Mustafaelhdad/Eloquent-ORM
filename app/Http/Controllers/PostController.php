@@ -28,11 +28,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
+    //     $post = new Post();
+    //     $post->title = $request->title;
+    //     $post->body = $request->body;
 
-        $post->save();
+    //     $post->save();
+
+        $post = Post::create([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
         return response('Data entered successfully');
     }
 
