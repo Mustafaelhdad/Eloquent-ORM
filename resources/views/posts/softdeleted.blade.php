@@ -4,7 +4,7 @@
     <th>id</th>
     <th>title</th>
     <th>body</th>
-    <th>edit/delete</th>
+    <th>restore</th>
 
     @foreach ($posts as $post)
         <tr>
@@ -12,12 +12,12 @@
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</td>
             <td>
-                <a href="{{route('posts.edit', $post->id)}}">Edit</a>
-                <form action="{{route('posts.destroy', $post->id)}}" method="post">
+                <a href="{{route('post.restore', $post->id)}}">Restore</a>
+                {{-- <form action="{{route('posts.destroy', $post->id)}}" method="post">
                     @method('DELETE')
                     @csrf
                     <button type="submit">Delete</button>
-                </form>
+                </form> --}}
             </td>
 
         </tr>

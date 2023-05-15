@@ -95,4 +95,12 @@ class PostController extends Controller
         Post::destroy($id);
         return redirect()->route('posts.index');
     }
+
+    public function restore($id) {
+        $posts = Post::onlyTrashed()->where('id', $id);
+
+        $posts->restore();
+
+        return redirect()->back();
+    }
 }
