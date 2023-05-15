@@ -13,7 +13,11 @@
             <td>{{$post->body}}</td>
             <td>
                 <a href="{{route('posts.edit', $post->id)}}">Edit</a>
-                {{-- <a href="{{route('posts.delete', $post->id)}}">Delete</a> --}}
+                <form action="{{route('posts.destroy', $post->id)}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit">Delete</button>
+                </form>
             </td>
 
         </tr>
