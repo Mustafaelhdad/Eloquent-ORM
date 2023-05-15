@@ -67,9 +67,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $post = Post::findorFail($id);
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->save();
+        $post->update(
+            // [
+            //     'title'=>$request->title,
+            //     'body'=>$request->body
+            // ]
+            $request->all()
+
+            );
+
+        return redirect()->route('posts.index');
     }
 
     /**
