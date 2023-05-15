@@ -56,9 +56,12 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        // $post = Post::findorFail($id);
+        $post = Post::where('id', $id)->first();
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
