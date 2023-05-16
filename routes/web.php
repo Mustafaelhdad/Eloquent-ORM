@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::resource('/posts', PostController::class);
 
 Route::get('/posts/restore/{id}', [PostController::class, 'restore'])->name('post.restore');
+
+Route::get('/posts/forcedelete/{id}', [PostController::class, 'forcedelete'])->name('post.forcedelete');

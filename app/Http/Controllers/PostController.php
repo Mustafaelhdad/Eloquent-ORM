@@ -97,10 +97,17 @@ class PostController extends Controller
     }
 
     public function restore($id) {
-        $posts = Post::onlyTrashed()->where('id', $id);
+        // $posts = Post::onlyTrashed()->where('id', $id);
 
-        $posts->restore();
+        // $posts->restore();
 
+        Post::withTrashed()->where('id', $id)->restore();
+
+        return redirect()->back();
+    }
+
+    public function forcedelete($id) {
+        Post::withTrashed()->where('id', $id)->forceDelete();
         return redirect()->back();
     }
 }
